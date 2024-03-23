@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Editor } from "@monaco-editor/react";
 import LanguageSelector from "../languageSelector/LanguageSelector";
+import Output from "../editorOutput/Output";
 import './codeEditor.scss';
 
 const CodeEditor = () => {
@@ -40,6 +41,7 @@ const CodeEditor = () => {
         </div>
       </div>
       <div className="output-wrapper">
+        <Output editorRef={editorRef} language={language} />
       </div>
     </div>
   );
