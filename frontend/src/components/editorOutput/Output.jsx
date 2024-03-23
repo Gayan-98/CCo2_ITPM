@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import "./output.scss"
 const Output = ({ editorRef, language }) => {
   const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +36,7 @@ const Output = ({ editorRef, language }) => {
       >
         {output
           ? output.map((line, i) => <div key={i}>{line}</div>)
-          : 'Click "Run Code" to see the output here'}
+          : 'Click "Run Code"'}
       </div>
     </div>
   );
