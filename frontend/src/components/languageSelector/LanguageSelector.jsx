@@ -12,6 +12,8 @@ const LanguageSelector = ({ language, onSelect }) => {
       </div>
       <div className="language-selector-menu">
         <button className="language-selector-button">{language}</button>
+        <br/><br/>
+        <h4>Language version List</h4>
         <ul className="language-selector-list">
           {languages.map(([lang, version]) => (
             <li

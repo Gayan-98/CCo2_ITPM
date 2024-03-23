@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import "./output.scss"
+import { executeCode } from "../../api/codeEditorApi";
+import './output.scss';
+
 const Output = ({ editorRef, language }) => {
   const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +12,9 @@ const Output = ({ editorRef, language }) => {
     if (!sourceCode) return;
     try {
       setIsLoading(true);
-    
+      const { run: result } = await executeCode(language, sourceCode);
+      setOutput(result.output.split("\n"));
+      result.stderr ? setIsError(true) : setIsError(false);
     } catch (error) {
       console.log(error);
       alert("An error occurred. " + (error.message || "Unable to run code"));
@@ -36,7 +40,7 @@ const Output = ({ editorRef, language }) => {
       >
         {output
           ? output.map((line, i) => <div key={i}>{line}</div>)
-          : 'Click "Run Code"'}
+          : 'Click "Run Code" to see the output here'}
       </div>
     </div>
   );
