@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Editor } from "@monaco-editor/react";
 import LanguageSelector from "../languageSelector/LanguageSelector";
-import Output from "../editorOutput/Output";
+import { CODE_SNIPPETS } from "../../data";
+import Output from '../editorOutput/Output';
 import './codeEditor.scss';
 
 const CodeEditor = () => {
@@ -16,6 +17,7 @@ const CodeEditor = () => {
 
   const onSelect = (language) => {
     setLanguage(language);
+    setValue(CODE_SNIPPETS[language]);
   };
 
   return (
@@ -34,6 +36,7 @@ const CodeEditor = () => {
             height="75vh"
             theme="vs-dark"
             language={language}
+            defaultValue={CODE_SNIPPETS[language]}
             onMount={onMount}
             value={value}
             onChange={(value) => setValue(value)}
