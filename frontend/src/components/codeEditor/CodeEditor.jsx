@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Editor } from "@monaco-editor/react";
-
+import LanguageSelector from "../languageSelector/LanguageSelector";
 import './codeEditor.scss';
 
 const CodeEditor = () => {
@@ -15,15 +15,13 @@ const CodeEditor = () => {
 
   const onSelect = (language) => {
     setLanguage(language);
-
   };
 
   return (
     <div className="code-editor-container">
       <div className="code-editor-wrapper">
         <div className="language-selector-wrapper">
-
-
+          <LanguageSelector language={language} onSelect={onSelect} />
         </div>
         <div className="editor-wrapper">
           <Editor
@@ -42,8 +40,6 @@ const CodeEditor = () => {
         </div>
       </div>
       <div className="output-wrapper">
-
-
       </div>
     </div>
   );

@@ -1,0 +1,58 @@
+.language-selector-container {
+    margin-left: 2px;
+    margin-bottom: 4px;
+  }
+  
+  .language-selector-label {
+    margin-bottom: 2px;
+    font-size: 1.125rem; // 18px
+  }
+  
+  .language-selector-menu {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .language-selector-button {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  
+  .language-selector-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0.5rem 0;
+    background-color: #110c1b;
+    list-style: none;
+    margin: 0;
+    border-radius: 0.25rem;
+    width: max-content;
+    z-index: 1;
+  }
+  
+  .language-selector-item {
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .language-selector-item:hover {
+    color: blue.400;
+    background-color: #b84040;
+  }
+  
+  .language-selector-item.active {
+    color: blue.400;
+    background-color: #4c1717;
+  }
+  
+  .language-selector-version {
+    color: gray.600;
+    font-size: 0.875rem; // 14px
+  }
+  
