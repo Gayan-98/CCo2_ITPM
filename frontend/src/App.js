@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import "./style.scss";
 import Home from "./pages/home/Home";
+import Login from "./pages/login/Login"
+import Signin from './pages/Registration/Registration';
 import LeftBar from "./components/leftBar/LeftBar";
 import RightBar from "./components/rightBar/RightBar";
 import {
@@ -12,6 +14,7 @@ import {
   Outlet,
   Navigate,
 } from "react-router-dom";
+import Registration from "./pages/Registration/Registration";
 function App() {
 
   const { darkMode } = useContext(DarkModeContext);
@@ -31,25 +34,27 @@ function App() {
     );
   };
 
-
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: (
-       
-          <Layout />
-        
-      ),
+      path: "/", 
+      element: <Layout />,
       children: [
         {
-          path: "/",
+          path: "/", 
           element: <Home />,
         },
-      
       ],
     },
-   
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/registration", 
+      element: <Registration />,
+    },
   ]);
+  
 
   return (
     <div>
