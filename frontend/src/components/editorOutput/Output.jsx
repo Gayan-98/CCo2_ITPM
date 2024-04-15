@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { executeCode } from "../../api/codeEditorApi";
 import axios from 'axios';
 import './output.scss';
@@ -20,17 +20,26 @@ const Output = ({ editorRef, language, onResponse }) => {
       result.stderr ? setIsError(true) : setIsError(false);
       setRunClicked(true);
       
-      // Send code snippet to backend
+   
       const response = await axios.post('http://localhost:8080/bot/chat', sourceCode, {
         headers: {
-          'Content-Type': 'text/plain' // Set content type as text/plain
+          'Content-Type': 'text/plain' 
         }
       });
-  console.log(response.data);
-      // Check if onResponse prop is a function before calling it
+      
+      console.log(response.data);
+
+      
+      localStorage.setItem('outputData', JSON.stringify(response.data));
+
+    
       if (typeof onResponse === 'function') {
         onResponse(response.data);
       }
+
+      setTimeout(() => {
+        localStorage.removeItem('outputData');
+      }, 40000); 
     } catch (error) {
       console.error('Error running code or sending code to backend:', error);
       alert("An error occurred. " + (error.message || "Unable to run code or send to backend"));
@@ -68,4 +77,5 @@ const Output = ({ editorRef, language, onResponse }) => {
     </div>
   );
 };
+
 export default Output;
