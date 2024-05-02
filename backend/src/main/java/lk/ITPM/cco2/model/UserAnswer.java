@@ -18,6 +18,4 @@ public class UserAnswer {
     private String answer;
 
     private int complexity;
-
-
 }
