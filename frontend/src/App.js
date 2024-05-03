@@ -24,7 +24,7 @@ import Register from "./pages/register/Register";
 
 import QuizInsert from "./pages/BeginnerQuiz/QuizInsert";
 import QuizInsert from "./pages/BeginnerQuiz/QuizView";
-import CategoryView from "./pages/BeginnerQuiz/categoryView";
+import categoryView from "./pages/BeginnerQuiz/categoryView";
 
 
 function App() {
@@ -141,7 +141,7 @@ function App() {
       children: [
         {
           path: "/categoryView", 
-          element: <CategoryView/>,
+          element: <categoryView/>,
         },
       ],
     },
