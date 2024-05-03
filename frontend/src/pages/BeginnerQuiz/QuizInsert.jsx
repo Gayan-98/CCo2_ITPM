@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './QuizInsert.scss'; 
 import axios from 'axios';
-import quizBackground from '../../assets/quizBackground.jpg'; // Adjust the path accordingly
+import quizBackground from '../../assets/quizbackg2.jpg'; // Adjust the path accordingly
 
 const QuizInsert = () => {
   const [formData, setFormData] = useState({
