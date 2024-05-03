@@ -22,6 +22,8 @@ import Chat from "./components/chat/Chat";
 
 import Register from "./pages/register/Register";
 
+import QuizInsert from "./pages/BeginnerQuiz/QuizInsert";
+import QuizInsert from "./pages/BeginnerQuiz/QuizView";
 
 
 function App() {
@@ -106,6 +108,28 @@ function App() {
         {
           path: "/advanceQuiz", 
           element: <AdvanceQuiz />,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout />,
+      children: [
+        {
+          path: "/QuizInsert", 
+          element: <QuizInsert/>,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout />,
+      children: [
+        {
+          path: "/QuizView", 
+          element: <QuizView/>,
         },
       ],
     },
