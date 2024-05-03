@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './QuizInsert.scss'; 
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import quizBackground from '../../assets/quizbackg2.jpg'; // Adjust the path accordingly
 
 const QuizInsert = () => {
@@ -13,6 +14,10 @@ const QuizInsert = () => {
     correctAnswer: '',
     category: '', 
   });
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const selectedCategory = searchParams.get('category');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -99,21 +104,13 @@ const options = [formData.option1, formData.option2, formData.option3, formData.
           onChange={handleInputChange}
           required
           //minlength="8"
+        />        
+        <label>Selected Category:</label>
+        <input
+          type="text"
+          value={selectedCategory}
+          disabled // Set to disabled to prevent editing
         />
-        {/* User selection */}
-        <select
-          name="category"
-          value={formData.category}
-          onChange={handleInputChange}
-          required
-        >
-          <option value="">Select category</option>
-          <option value="category1">Category1</option>
-          <option value="category2">Category2</option>
-          <option value="category3">Category3</option>
-          <option value="category4">Category4</option>
-          <option value="category5">Category5</option>
-        </select>
         <button type="submit">Submit</button>
       </form>
     </div>
