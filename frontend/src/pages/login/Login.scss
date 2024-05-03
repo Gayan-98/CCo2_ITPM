@@ -1,112 +1,86 @@
-
-.container1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.login {
   height: 100vh;
-}
+  background-color: rgb(217, 245, 251);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.Login-container {
-  background-color: rgb(212, 242, 243);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  max-width: 400px;
-  text-align: center;
-
-  h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-
-  .input-container {
+  .card {
+    width: 50%;
     display: flex;
-    align-items: center;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 600px;
+    overflow: hidden;
 
-    .input-icon {
-      flex: 0 0 auto;
-      margin: 0 10px;
-      color: #666;
-    }
-
-    input {
+    .left {
       flex: 1;
-      border: none;
-      outline: none;
-      padding: 10px;
-      background-color: transparent;
-    }
-  }
+      background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+        url("../../assets/loginbackground.jpg")
+          center;
+      background-size: cover;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: white;
 
-  .password-toggle {
-    cursor: pointer;
-    color: #666;
-  }
+      h1 {
+        font-size: 100px;
+        line-height: 100px;
+      }
+      
+      p {
+      }
 
-  .options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-
-    label {
-      color: #666;
-      font-size: 14px;
-
-      input[type='checkbox'] {
-        margin-right: 5px;
+      span {
+        font-size: 14px;
+      }
+      
+      button {
+        width: 50%;
+        padding: 10px;
+        border: none;
+        background-color: white;
+        color: rebeccapurple;
+        font-weight: bold;
+        cursor: pointer;
       }
     }
 
-    .forgot-password {
-      a {
-        color: #007bff;
-        text-decoration: none;
+    .right {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      justify-content: center;
 
-        &:hover {
-          text-decoration: underline;
+      h1 {
+      color: #555;
+      }
+      
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        
+        input {
+        border: none;
+        border-bottom: 1px solid lightgray;
+        padding: 20px 10px;
+        }
+        
+        button {
+          width: 50%;
+          padding: 10px;
+          border: none;
+          background-color: #938eef;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
         }
       }
     }
-  }
-
-  .Login-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-
-  .create-account {
-    text-align: center;
-
-    a {
-      color: #007bff;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-.illustration-section {
-  margin-left: 20px;
-
-  img {
-    border-radius: 10px;
   }
 }

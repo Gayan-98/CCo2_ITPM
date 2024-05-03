@@ -16,6 +16,11 @@ public class AdvanceQuizController {
     @Autowired
     private AdvanceQuizService advanceQuizService;
 
+    @GetMapping("/get/test")
+    public String test(){
+        return "OKAY";
+    }
+
     @PostMapping("/post")
     public AdvanceQuiz createQuiz(@RequestBody AdvanceQuiz quiz) {
         return advanceQuizService.createQuiz(quiz);

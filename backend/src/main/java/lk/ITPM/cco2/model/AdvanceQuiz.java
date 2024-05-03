@@ -17,7 +17,12 @@ public class AdvanceQuiz {
     private String question;
     private String answer;
 
-    private int complexity;
+    private int linesOfCode;
+    private int duplicateCodeBlocks;
+    private int maxNestingDepth;
+    private String estimatedTimeComplexity;
+    private String estimatedSpaceComplexity;
+    private int controlFlowComplexity;
 
 
 }

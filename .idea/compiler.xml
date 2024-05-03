@@ -10,6 +10,12 @@
         <module name="cco2" />
       </profile>
     </annotationProcessing>
+<<<<<<< HEAD
+    <bytecodeTargetLevel>
+      <module name="cco2" target="17" />
+    </bytecodeTargetLevel>
+=======
+>>>>>>> 1f6913e3c8dfc1c33a3c6a2582e1c90c0cf82246
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
