@@ -11,7 +11,8 @@ public class CodeComplexityMetrics {
     private String id;
     private String userId;
     private String quizId;
-//    private int complexityValue;
+    private String code;
+
     private int linesOfCode;
     private int duplicateCodeBlocks;
     private int maxNestingDepth;
