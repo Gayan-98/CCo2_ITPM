@@ -19,6 +19,8 @@ import Attempt from "./pages/advanceQuiz/attemptQuiz";
 
 import DisplayQuiz from "./pages/advanceQuiz/displayQuiz";
 import SubmitQuiz from "./pages/advanceQuiz/SubmitQuiz";
+import Chat from "./components/chat/Chat";
+
 
 
 
@@ -104,6 +106,18 @@ function App() {
         {
           path: "/advanceQuiz", 
           element: <AdvanceQuiz />,
+        },
+      ],
+    },
+
+
+    {
+      path: "/chat", 
+      element: <Layout2 /> ,
+      children: [
+        {
+          path: "/chat", 
+          element: <Chat />,
         },
       ],
     },
