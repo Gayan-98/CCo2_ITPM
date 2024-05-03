@@ -1,19 +1,15 @@
 package lk.ITPM.cco2.service.impl;
 
-import com.github.javaparser.JavaParser;
-import com.github.javaparser.ParseResult;
-import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.stmt.ForEachStmt;
-import com.github.javaparser.ast.stmt.ForStmt;
-import com.github.javaparser.ast.stmt.IfStmt;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import lk.ITPM.cco2.dto.request.CodeComplexityMetricsDTO;
+import lk.ITPM.cco2.model.CodeComplexityMetrics;
 import lk.ITPM.cco2.repository.CodeComplexityMetricsRepository;
 import lk.ITPM.cco2.service.CodeComplexityMetricsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import lk.ITPM.cco2.model.CodeComplexityMetrics;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class CodeComplexityMetricsServiceImpl implements CodeComplexityMetricsService {
@@ -28,64 +24,83 @@ public class CodeComplexityMetricsServiceImpl implements CodeComplexityMetricsSe
         }
 
         // Calculate code complexity metrics
-        int complexityValue = calculateCodeComplexity(dto.getCode());
-
-        // Create a new CodeComplexityMetrics object
         CodeComplexityMetrics metrics = new CodeComplexityMetrics();
         metrics.setUserId(dto.getUserId());
         metrics.setQuizId(dto.getQuizId());
-        metrics.setComplexityValue(complexityValue);
+        metrics.setLinesOfCode(countLinesOfCode(dto.getCode()));
+        metrics.setDuplicateCodeBlocks(findDuplicateCodeBlocks(dto.getCode()));
+        metrics.setMaxNestingDepth(calculateMaxNestingDepth(dto.getCode()));
+        metrics.setEstimatedTimeComplexity(estimateTimeComplexity(dto.getCode()));
+        metrics.setEstimatedSpaceComplexity(estimateSpaceComplexity(dto.getCode()));
+        metrics.setControlFlowComplexity(calculateControlFlowComplexity(dto.getCode()));
 
         // Save the metrics to the database
         repository.save(metrics);
     }
 
-    public int calculateCodeComplexity(String code) {
-        JavaParser javaParser = new JavaParser();
-        ParseResult<CompilationUnit> parseResult = javaParser.parse(code);
-
-        // Check if parsing was successful
-        if (parseResult.isSuccessful()) {
-            CompilationUnit compilationUnit = parseResult.getResult().orElseThrow(() -> new IllegalArgumentException("Parsing failed"));
-
-            // Visitor to traverse the AST (Abstract Syntax Tree) and calculate cyclomatic complexity
-            CyclomaticComplexityVisitor visitor = new CyclomaticComplexityVisitor();
-            compilationUnit.accept(visitor, null);
-
-            return visitor.getCyclomaticComplexity();
-        } else {
-            // Handle parsing failure
-            throw new IllegalArgumentException("Parsing failed");
-        }
+    public int countLinesOfCode(String code) {
+        return (int) code.lines().filter(line -> !line.trim().isEmpty()).count();
     }
 
-
-    // Visitor class to traverse the AST and calculate cyclomatic complexity
-    public class CyclomaticComplexityVisitor extends VoidVisitorAdapter<Void> {
-        private int cyclomaticComplexity = 1; // Default complexity is 1 for the entry point
-
-        @Override
-        public void visit(IfStmt n, Void arg) {
-            cyclomaticComplexity++; // Increment complexity for each if statement
-            super.visit(n, arg);
+    public int findDuplicateCodeBlocks(String code) {
+        String[] lines = code.split("\\r?\\n");
+        int duplicateCount = 0;
+        for (int i = 0; i < lines.length; i++) {
+            for (int j = i + 1; j < lines.length; j++) {
+                if (lines[i].trim().equals(lines[j].trim())) {
+                    duplicateCount++;
+                    break;
+                }
+            }
         }
+        return duplicateCount;
+    }
 
-        @Override
-        public void visit(ForStmt n, Void arg) {
-            cyclomaticComplexity++; // Increment complexity for each for loop
-            super.visit(n, arg);
+    public int calculateMaxNestingDepth(String code) {
+        int currentDepth = 0, maxDepth = 0;
+        for (char ch : code.toCharArray()) {
+            if (ch == '{') {
+                currentDepth++;
+                maxDepth = Math.max(maxDepth, currentDepth);
+            } else if (ch == '}') {
+                currentDepth--;
+            }
         }
+        return maxDepth;
+    }
 
-        @Override
-        public void visit(ForEachStmt n, Void arg) {
-            cyclomaticComplexity++; // Increment complexity for each foreach loop
-            super.visit(n, arg);
+    public String estimateTimeComplexity(String code) {
+        // Estimation based on counting loops and conditionals
+        int complexity = 1; // Default is O(1)
+        // Count occurrences of common loops and conditionals
+        int loopCount = countOccurrences(code, "\\bfor\\b|\\bwhile\\b");
+        int ifCount = countOccurrences(code, "\\bif\\b");
+        // Update complexity based on counts
+        complexity += loopCount; // Each loop contributes O(n)
+        complexity += ifCount;   // Each if statement contributes O(1)
+        return "O(" + complexity + ")";
+    }
+
+    public int countOccurrences(String code, String pattern) {
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(code);
+        int count = 0;
+        while (m.find()) {
+            count++;
         }
+        return count;
+    }
 
-        // Implement similar methods for other control flow structures such as while loops, switch statements, etc.
+    public String estimateSpaceComplexity(String code) {
+        // Estimation based on counting variable declarations
+        int varCount = countOccurrences(code, "\\bint\\b|\\bdouble\\b|\\bfloat\\b|\\bString\\b");
+        return "O(" + varCount + ")";
+    }
 
-        public int getCyclomaticComplexity() {
-            return cyclomaticComplexity;
-        }
+    public int calculateControlFlowComplexity(String code) {
+        // Placeholder calculation
+        int complexity = 1; // Base complexity for single path
+        // You can enhance this by counting loops, conditionals, etc.
+        return complexity;
     }
 }

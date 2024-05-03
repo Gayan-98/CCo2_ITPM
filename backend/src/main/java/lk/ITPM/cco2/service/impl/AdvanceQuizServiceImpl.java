@@ -17,9 +17,15 @@ public class AdvanceQuizServiceImpl implements AdvanceQuizService {
     @Override
     public AdvanceQuiz createQuiz(AdvanceQuiz quiz) {
         CodeComplexityMetricsServiceImpl measure=new CodeComplexityMetricsServiceImpl();
-        String quizAnswer=quiz.getAnswer();
-        int quizComplexity=measure.calculateCodeComplexity(quizAnswer);
-        quiz.setComplexity(quizComplexity);
+
+        quiz.setLinesOfCode(measure.countLinesOfCode(quiz.getAnswer()));
+        quiz.setDuplicateCodeBlocks(measure.findDuplicateCodeBlocks(quiz.getAnswer()));
+        quiz.setMaxNestingDepth(measure.calculateMaxNestingDepth(quiz.getAnswer()));
+        quiz.setEstimatedTimeComplexity(measure.estimateTimeComplexity(quiz.getAnswer()));
+        quiz.setEstimatedSpaceComplexity(measure.estimateSpaceComplexity(quiz.getAnswer()));
+        quiz.setControlFlowComplexity(measure.calculateControlFlowComplexity(quiz.getAnswer()));
+
+
         return advanceQuizRepository.save(quiz);
     }
 
