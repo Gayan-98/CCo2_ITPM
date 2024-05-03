@@ -1,21 +1,26 @@
+
 @import "../../style.scss";
 
 .rightBar {
+
   @include themify($themes) {
+  
     flex: 4;
     position: sticky;
     top: 70px;
     height: calc(100vh - 70px);
     overflow: scroll;
-    // background-color: themed("bgSoft");
-background-color: rgb(165, 227, 237);
-    @include mobile{
-      display: none;
+    background-color: rgb(165, 227, 237); 
+
+    @include mobile {
+      display: none; 
     }
-    @include tablet{
-      display: none;
+    
+    @include tablet {
+      display: none; 
     }
 
+   
     &::-webkit-scrollbar {
       display: none;
     }
@@ -24,17 +29,19 @@ background-color: rgb(165, 227, 237);
       padding: 20px;
 
       .item {
+      
         -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
         padding: 20px;
         margin-bottom: 20px;
-        background-color: themed("bg");
+        background-color: themed("bg"); 
 
         span {
           color: gray;
         }
 
+    
         .user {
           display: flex;
           align-items: center;
@@ -47,6 +54,7 @@ background-color: rgb(165, 227, 237);
             gap: 20px;
             position: relative;
 
+ 
             img {
               width: 40px;
               height: 40px;
@@ -55,17 +63,26 @@ background-color: rgb(165, 227, 237);
             }
 
            
+            li {
+              list-style-type: none;
+              font-size: 16px;
+              margin: 5px 0;
+              padding: 0;
+              color: themed("textColor"); 
+            }
 
+         
             p {
-              color: themed("textColorSoft");
+              color: themed("textColorSoft"); 
             }
 
             span {
               font-weight: 500;
-              color: themed("textColor");
+              color: themed("textColor"); 
             }
           }
 
+       
           .buttons {
             display: flex;
             align-items: center;
@@ -73,16 +90,16 @@ background-color: rgb(165, 227, 237);
 
             button {
               border: none;
-              padding: 5px;
+              padding: 12px;
               color: white;
               cursor: pointer;
 
               &:first-child {
-                background-color: #5271ff;
+                background-color: #5271ff; 
               }
 
               &:last-child {
-                background-color: #f0544f;
+                background-color: #f0544f; 
               }
             }
           }

@@ -11,13 +11,24 @@
   }
   
   .output-title {
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem; 
   }
   
   .run-code-button {
-    padding: 8px 36px;
+    padding: 8px 66px;
+    width: 18px;
     border: none;
-    background-color: #48bb78;
+    background-color: #17cf6d;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-code-button {
+    padding: 8px 66px;
+    width: 18px;
+    border: none;
+    background-color: #5460dd;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
