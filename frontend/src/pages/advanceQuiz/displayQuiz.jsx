@@ -11,7 +11,7 @@ const DisplayQuiz = () => {
 
     const fetchQuestion = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/api/advance_quizzes/get/66073acd2b83ed3953c37dd1");
+            const response = await axios.get("http://localhost:8080/api/advance_quizzes/get/6607bdc07a501f14a93e2d74");
             setQuestion(response.data.question);
         } catch (error) {
             console.error('Error fetching question:', error);

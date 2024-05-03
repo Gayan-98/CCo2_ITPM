@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { executeCode } from "../../api/codeEditorApi";
+import axios from 'axios';
 import './output.scss';
 
-const Output = ({ editorRef, language }) => {
+const Output = ({ editorRef, language, onResponse }) => {
   const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [runClicked, setRunClicked] = useState(false); // State to track if Run button has been clicked
-  const [submitClicked, setSubmitClicked] = useState(false); // State to track if Submit button has been clicked
+  const [runClicked, setRunClicked] = useState(false);
+  const [submitClicked, setSubmitClicked] = useState(false);
 
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
@@ -17,22 +18,36 @@ const Output = ({ editorRef, language }) => {
       const { run: result } = await executeCode(language, sourceCode);
       setOutput(result.output.split("\n"));
       result.stderr ? setIsError(true) : setIsError(false);
-      // Set Run button clicked state to true
       setRunClicked(true);
+      
+   
+      const response = await axios.post('http://localhost:8080/bot/chat', sourceCode, {
+        headers: {
+          'Content-Type': 'text/plain' 
+        }
+      });
+      
+      console.log(response.data);
+
+      
+      localStorage.setItem('outputData', JSON.stringify(response.data));
+
+    
+      if (typeof onResponse === 'function') {
+        onResponse(response.data);
+      }
+
+      setTimeout(() => {
+        localStorage.removeItem('outputData');
+      }, 40000); 
     } catch (error) {
-      console.log(error);
-      alert("An error occurred. " + (error.message || "Unable to run code"));
+      console.error('Error running code or sending code to backend:', error);
+      alert("An error occurred. " + (error.message || "Unable to run code or send to backend"));
     } finally {
       setIsLoading(false);
     }
   };
-
-  const handleSubmit = () => {
-    // Handle submission logic
-    setSubmitClicked(true);
-    // Add your submission logic here
-  };
-
+  
   return (
     <div className="output-container">
       <div className="output-header">
@@ -44,10 +59,9 @@ const Output = ({ editorRef, language }) => {
         >
           Run
         </button>
-        {/* Enable submit button only after Run button has been clicked */}
         <button
           className={`submit-code-button ${!runClicked ? 'disabled' : ''}`}
-          onClick={handleSubmit}
+          onClick={() => setSubmitClicked(true)}
           disabled={!runClicked || submitClicked}
         >
           Submit
@@ -63,4 +77,5 @@ const Output = ({ editorRef, language }) => {
     </div>
   );
 };
+
 export default Output;

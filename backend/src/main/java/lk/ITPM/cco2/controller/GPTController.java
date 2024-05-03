@@ -19,5 +19,6 @@ public class GPTController {
     public String chat(@RequestBody String inputPrompt) {
         return gptService.getResponse(inputPrompt);
     }
+
 }
 

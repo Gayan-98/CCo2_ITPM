@@ -4,7 +4,6 @@ import { DarkModeContext } from "./context/darkModeContext";
 import "./style.scss";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login"
-import Registration from "./pages/Registration/Registration";
 import LeftBar from "./components/leftBar/LeftBar";
 import RightBar from "./components/rightBar/RightBar";
 import {
@@ -19,6 +18,9 @@ import Attempt from "./pages/advanceQuiz/attemptQuiz";
 
 import DisplayQuiz from "./pages/advanceQuiz/displayQuiz";
 import SubmitQuiz from "./pages/advanceQuiz/SubmitQuiz";
+import Chat from "./components/chat/Chat";
+
+import Register from "./pages/register/Register";
 
 
 
@@ -93,8 +95,8 @@ function App() {
       element: <Login />,
     },
     {
-      path: "/registration", 
-      element: <Registration />,
+      path: "/register", 
+      element: <Register />,
     },
    
     {
@@ -104,6 +106,18 @@ function App() {
         {
           path: "/advanceQuiz", 
           element: <AdvanceQuiz />,
+        },
+      ],
+    },
+
+
+    {
+      path: "/chat", 
+      element: <Chat />,
+      children: [
+        {
+          path: "/chat", 
+          element: <Chat />,
         },
       ],
     },
