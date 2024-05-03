@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import './categoryView.scss';
 
 const categoryView = () => {
   const [categories, setCategories] = useState([]);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './quizEdit.scss';
 import { useParams } from 'react-router-dom';
 
 const quizEdit = () => {
