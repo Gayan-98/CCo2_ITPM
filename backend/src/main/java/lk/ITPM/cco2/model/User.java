@@ -1,4 +1,4 @@
-package com.paf.userservice.model;
+package lk.ITPM.cco2.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

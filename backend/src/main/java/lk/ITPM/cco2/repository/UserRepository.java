@@ -1,7 +1,6 @@
-package com.paf.userservice.repository;
+package lk.ITPM.cco2.repository;
 
-import com.paf.userservice.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lk.ITPM.cco2.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
-package com.paf.userservice.service;
+package lk.ITPM.cco2.service;
 
 
-import com.paf.userservice.model.User;
+import lk.ITPM.cco2.model.User;
 
 public interface UserService {
     User registerUser(User user);

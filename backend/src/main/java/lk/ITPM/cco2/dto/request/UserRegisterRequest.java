@@ -1,4 +1,4 @@
-package com.paf.userservice.dto.request;
+package lk.ITPM.cco2.dto.request;
 
 import lombok.Data;
 

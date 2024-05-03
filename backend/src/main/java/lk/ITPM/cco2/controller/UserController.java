@@ -1,12 +1,15 @@
-package com.paf.userservice.controller;
+package lk.ITPM.cco2.controller;
 
-import com.paf.userservice.dto.request.LoginRequest;
-import com.paf.userservice.dto.request.UserRegisterRequest;
-import com.paf.userservice.model.User;
-import com.paf.userservice.service.UserService;
+import lk.ITPM.cco2.dto.request.LoginRequest;
+import lk.ITPM.cco2.dto.request.UserRegisterRequest;
+import lk.ITPM.cco2.model.User;
+import lk.ITPM.cco2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 

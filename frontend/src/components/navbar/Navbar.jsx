@@ -6,13 +6,29 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
 
 const Navbar = () => {
   const { toggle, darkMode } = useContext(DarkModeContext);
-  // const { currentUser } = useContext(AuthContext);
+  const [username, setUsername] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
+
+  const handleSignout = () => {
+    // Clear username from localStorage and set it to an empty string
+    localStorage.removeItem("username");
+    setUsername("");
+    // Other signout logic (e.g., redirecting to login page)
+  };
 
   return (
     <div className="navbar">
@@ -28,17 +44,29 @@ const Navbar = () => {
         )}
         <GridViewOutlinedIcon />
       </div>
+     
       <div className="right">
-        <Link to="/login" style={{ textDecoration: "none" }}>
+        <div className="username" onClick={() => setShowDropdown(!showDropdown)}>
           <PersonOutlinedIcon />
-        </Link>
-        <div className="user">
-          <img
-            // src={currentUser.profilePic}
-            alt=""
-          />
-          {/* <span>{currentUser.name}</span> */}
+          <span>Hi ! {username}</span>
         </div>
+        {/* Dropdown menu */}
+        {showDropdown && (
+          <div className="dropdown">
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <div className="dropdown-item">
+                <PersonOutlinedIcon />
+                <span>Profile</span>
+              </div>
+            </Link>
+            <Link to="/login" style={{ textDecoration: "none" }}>
+            <div className="dropdown-item" onClick={handleSignout}>
+              <ExitToAppOutlinedIcon />
+              <span>Sign out</span>
+            </div>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

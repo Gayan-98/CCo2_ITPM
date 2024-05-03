@@ -1,8 +1,8 @@
-package com.paf.userservice.service.impl;
+package lk.ITPM.cco2.service.impl;
 
-import com.paf.userservice.model.User;
-import com.paf.userservice.repository.UserRepository;
-import com.paf.userservice.service.UserService;
+import lk.ITPM.cco2.model.User;
+import lk.ITPM.cco2.repository.UserRepository;
+import lk.ITPM.cco2.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
