@@ -4,6 +4,6 @@ import lombok.AllArgsConstructor;
 
 
 public interface GPTService {
-    String getResponse(String inputPrompt);
+    String getResponse(String id);
 }
 

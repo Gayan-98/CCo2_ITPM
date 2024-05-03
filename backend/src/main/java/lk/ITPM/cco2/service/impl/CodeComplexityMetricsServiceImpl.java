@@ -27,6 +27,7 @@ public class CodeComplexityMetricsServiceImpl implements CodeComplexityMetricsSe
         CodeComplexityMetrics metrics = new CodeComplexityMetrics();
         metrics.setUserId(dto.getUserId());
         metrics.setQuizId(dto.getQuizId());
+        metrics.setCode(dto.getCode());
         metrics.setLinesOfCode(countLinesOfCode(dto.getCode()));
         metrics.setDuplicateCodeBlocks(findDuplicateCodeBlocks(dto.getCode()));
         metrics.setMaxNestingDepth(calculateMaxNestingDepth(dto.getCode()));
