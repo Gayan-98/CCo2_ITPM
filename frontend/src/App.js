@@ -23,7 +23,7 @@ import Chat from "./components/chat/Chat";
 import Register from "./pages/register/Register";
 
 import QuizInsert from "./pages/BeginnerQuiz/QuizInsert";
-import QuizInsert from "./pages/BeginnerQuiz/QuizView";
+import QuizView from "./pages/BeginnerQuiz/QuizView";
 import categoryView from "./pages/BeginnerQuiz/categoryView";
 import quizEdit from "./pages/BeginnerQuiz/quizEdit";
 
@@ -116,7 +116,7 @@ function App() {
 
     {
       path: "/", 
-      element: <Layout />,
+      element: <Layout2 />,
       children: [
         {
           path: "/QuizInsert", 
@@ -127,7 +127,7 @@ function App() {
 
     {
       path: "/", 
-      element: <Layout />,
+      element: <Layout2 />,
       children: [
         {
           path: "/QuizView", 
@@ -138,7 +138,7 @@ function App() {
 
     {
       path: "/", 
-      element: <Layout />,
+      element: <Layout2 />,
       children: [
         {
           path: "/categoryView", 
@@ -149,7 +149,7 @@ function App() {
 
     {
       path: "/", 
-      element: <Layout />,
+      element: <Layout2 />,
       children: [
         {
           path: "/quizEdit", 

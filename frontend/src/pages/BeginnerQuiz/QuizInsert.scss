@@ -2,17 +2,18 @@
   background-color: rgb(212, 242, 243);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 40px;
+  padding: 20px;
   max-width: 400px;
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 40%;
   transform: translate(-50%, -50%);
   z-index: 9999;
+  margin-top: 3%;
   
   h2 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
   }
 

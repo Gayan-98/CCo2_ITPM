@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './QuizInsert.scss'; 
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import quizBackground from '../../assets/quizbackg2.jpg'; // Adjust the path accordingly
+import quizBackground from '../../assets/images-transformed2.jpeg'; // Adjust the path accordingly
 
 const QuizInsert = () => {
   const [formData, setFormData] = useState({
@@ -115,8 +115,8 @@ const options = [formData.option1, formData.option2, formData.option3, formData.
       </form>
     </div>
 
-    <div className="illustration-section">
-        <img src={quizBackground} width={1500} alt="Sign In Background" />
+     <div className="illustration-section">
+        <img src={quizBackground} width={1150} alt="Sign In Background" />
       </div>
     </div>
   );
