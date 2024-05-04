@@ -11,7 +11,7 @@ const QuestionsList = () => {
     // Fetch questions from the database
     axios.get('YOUR_API_ENDPOINT')
       .then(response => {
-        setQuestions(response.data); // Assuming the response contains an array of questions
+        setQuestions(response.data); //the response contains an array of questions
       })
       .catch(error => {
         console.error('Error fetching questions:', error);
@@ -19,7 +19,7 @@ const QuestionsList = () => {
   }, []);
 
   const handleDeleteQuestion = (id) => {
-    // Send a DELETE request to your backend API
+    // Send a DELETE request to backend API
     axios.delete(`YOUR_API_ENDPOINT/${id}`)
       .then(response => {
         // Remove the deleted question from the local state
