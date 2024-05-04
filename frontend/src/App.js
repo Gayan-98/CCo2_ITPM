@@ -20,6 +20,11 @@ import Attempt from "./pages/advanceQuiz/attemptQuiz";
 import DisplayQuiz from "./pages/advanceQuiz/displayQuiz";
 import SubmitQuiz from "./pages/advanceQuiz/SubmitQuiz";
 
+import QuizInsert from "./pages/beginnerQuiz/quizInsert";
+import QuizEdit from "./pages/beginnerQuiz/quizEdit";
+import CategoryView from "./pages/beginnerQuiz/categoryView";
+import QuizView from "./pages/beginnerQuiz/quizView";
+import CategoryView from "./pages/beginnerQuiz/categoryView";
 
 
 function App() {
@@ -104,6 +109,50 @@ function App() {
         {
           path: "/advanceQuiz", 
           element: <AdvanceQuiz />,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/quizInsert", 
+          element: <QuizInsert />,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/quizEdit", 
+          element: <QuizEdit />,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/categoryView", 
+          element: <CategoryView />,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/quizView", 
+          element: <QuizView/>,
         },
       ],
     },
