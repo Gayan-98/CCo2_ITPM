@@ -113,7 +113,7 @@ function App() {
 
     {
       path: "/chat", 
-      element: <Chat />,
+      element:  <Layout2 />,
       children: [
         {
           path: "/chat", 
