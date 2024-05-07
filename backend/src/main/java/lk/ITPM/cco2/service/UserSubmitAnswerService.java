@@ -8,7 +8,7 @@ import java.util.Map;
 public interface UserSubmitAnswerService {
     void create(UserSubmitAnswerRequest request, String questionId);
 
-    List<String> getCorrectAnswerCountByCategory(String name);
+    List<Long> getCorrectAnswerCountByCategory(String name);
 
     Map<String, List<String>> getFalseAnswersKeywordsByCategory(String name);
 }

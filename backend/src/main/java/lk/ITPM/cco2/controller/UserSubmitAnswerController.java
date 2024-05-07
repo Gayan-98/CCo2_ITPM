@@ -20,7 +20,7 @@ public class UserSubmitAnswerController {
     }
 
     @GetMapping("/{name}/category-counts")
-    public List<String> getCorrectAnswerCountByCategory(@PathVariable String name) {
+    public List<Long> getCorrectAnswerCountByCategory(@PathVariable String name) {
         return userSubmitAnswerService.getCorrectAnswerCountByCategory(name);
     }
 
