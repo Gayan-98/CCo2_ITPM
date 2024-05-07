@@ -1,28 +1,52 @@
-//import './Quiz.scss'; 
-//import quizBackground from '../../assets/quizBackground.jpg'; // Adjust the path accordingly
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './quizView.scss';
 
 const QuestionsList = () => {
   const [questions, setQuestions] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
-    // Fetch questions from the database
-    axios.get('YOUR_API_ENDPOINT')
-      .then(response => {
-        setQuestions(response.data); //the response contains an array of questions
-      })
-      .catch(error => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/categories/${selectedCategory}/questions`);
+        setQuestions(response.data);
+      } catch (error) {
         console.error('Error fetching questions:', error);
-      });
-  }, []);
+      }
+    };
+
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchQuestions();
+    fetchCategories();
+    const storedCategoryId = localStorage.getItem('selectedId');
+    if (storedCategoryId) {
+      setSelectedCategory(storedCategoryId);
+    }
+  }, [selectedCategory]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === 'category') {
+      localStorage.setItem('selectedId', value);
+      setSelectedCategory(value);
+    }
+  };
 
   const handleDeleteQuestion = (id) => {
-    // Send a DELETE request to backend API
     axios.delete(`YOUR_API_ENDPOINT/${id}`)
       .then(response => {
-        // Remove the deleted question from the local state
         setQuestions(questions.filter(question => question.id !== id));
         console.log('Question deleted successfully');
       })
@@ -30,19 +54,29 @@ const QuestionsList = () => {
         console.error('Error deleting question:', error);
       });
   };
-  
 
   return (
-    <div>
+    <div className="questions-list-container">
+      <label>Select Category:</label>
+      <select
+        name="category"
+        value={selectedCategory}
+        onChange={handleInputChange}
+        required
+      >
+        <option value="">Select a category</option>
+        {categories.map((category) => (
+          <option key={category.id} value={category.id}>
+            {category.category}
+          </option>
+        ))}
+      </select>
       <h2>Questions List</h2>
-      <table>
+      <table className="questions-table">
         <thead>
           <tr>
             <th>Question</th>
-            <th>Option 1</th>
-            <th>Option 2</th>
-            <th>Option 3</th>
-            <th>Option 4</th>
+            <th>Options</th>
             <th>Correct Answer</th>
             <th>Actions</th>
           </tr>
@@ -50,11 +84,15 @@ const QuestionsList = () => {
         <tbody>
           {questions.map(question => (
             <tr key={question.id}>
-              <td>{question.Question}</td>
-              <td>{question.option1}</td>
-              <td>{question.option2}</td>
-              <td>{question.option3}</td>
-              <td>{question.option4}</td>
+              <td>{question.question}</td>
+              <td>
+                <ul className="options-list">
+                  <li>{question.option1}</li>
+                  <li>{question.option2}</li>
+                  <li>{question.option3}</li>
+                  <li>{question.option4}</li>
+                </ul>
+              </td>
               <td>{question.correctAnswer}</td>
               <td>
                 <Link to={`/quiz-edit/${question.id}`} className="btn-edit">Edit</Link>

@@ -28,6 +28,7 @@ import QuizInsert from "./pages/beginnerQuiz/quizInsert";
 import QuizEdit from "./pages/beginnerQuiz/quizEdit";
 import CategoryView from "./pages/beginnerQuiz/categoryView";
 import QuizView from "./pages/beginnerQuiz/quizView";
+import CategoryAddForm from "./pages/beginnerQuiz/Categoryadd";
 
 
 function App() {
@@ -182,6 +183,16 @@ function App() {
         {
           path: "/categoryView", 
           element: <CategoryView />,
+        },
+      ],
+    },
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/categoryadd", 
+          element: <CategoryAddForm />,
         },
       ],
     },
