@@ -5,9 +5,6 @@ import lk.ITPM.cco2.service.UserSubmitAnswerService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-
 @RestController
 @AllArgsConstructor
 public class UserSubmitAnswerController {
@@ -19,13 +16,4 @@ public class UserSubmitAnswerController {
         userSubmitAnswerService.create(request,questionId);
     }
 
-    @GetMapping("/{name}/category-counts")
-    public List<Long> getCorrectAnswerCountByCategory(@PathVariable String name) {
-        return userSubmitAnswerService.getCorrectAnswerCountByCategory(name);
-    }
-
-    @GetMapping("/{name}/false-answers-keywords")
-    public Map<String, List<String>> getFalseAnswersKeywordsByCategory(@PathVariable String name) {
-        return userSubmitAnswerService.getFalseAnswersKeywordsByCategory(name);
-    }
 }

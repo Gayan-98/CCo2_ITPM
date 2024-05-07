@@ -7,5 +7,6 @@ public class UserSubmitAnswerRequest {
     private String id;
     private String name;
     private String submitAnswer;
+    private String userId;
     private Boolean answerStatus;
 }
