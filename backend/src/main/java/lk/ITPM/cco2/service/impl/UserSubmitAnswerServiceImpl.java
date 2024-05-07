@@ -39,33 +39,5 @@ public class UserSubmitAnswerServiceImpl implements UserSubmitAnswerService {
         }
     }
 
-    public List<Long> getCorrectAnswerCountByCategory(String name) {
-        List<UserSubmitAnswer> userSubmitAnswers = userSubmitAnswerRepository.findByAnswerStatusTrue(name);
     
-        Map<String, Long> countByCategory = userSubmitAnswers.stream()
-                .collect(Collectors.groupingBy(
-                        userSubmitAnswer -> userSubmitAnswer.getQuestion().getCategory().toString(),
-                        Collectors.counting()
-                ));
-    
-        List<Long> result = new ArrayList<>();
-        for (Map.Entry<String, Long> entry : countByCategory.entrySet()) {
-            Long count = entry.getValue();
-            result.add(count);
-        }
-    
-        return result;
-    }
-
-    @Override
-    public Map<String, List<String>> getFalseAnswersKeywordsByCategory(String name) {
-        List<UserSubmitAnswer> userSubmitAnswers = userSubmitAnswerRepository.findByAnswerStatusFalse(name);
-
-        return userSubmitAnswers.stream()
-                .filter(userSubmitAnswer -> userSubmitAnswer.getQuestion() != null && userSubmitAnswer.getQuestion().getKeyWord() != null)
-                .collect(Collectors.groupingBy(
-                        userSubmitAnswer -> userSubmitAnswer.getQuestion().getCategory().toString(),
-                        Collectors.mapping(userSubmitAnswer -> userSubmitAnswer.getQuestion().getKeyWord(), Collectors.toList())
-                ));
-    }
 }
