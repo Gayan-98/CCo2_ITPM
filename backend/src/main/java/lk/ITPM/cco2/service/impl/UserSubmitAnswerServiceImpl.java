@@ -10,11 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -43,35 +39,4 @@ public class UserSubmitAnswerServiceImpl implements UserSubmitAnswerService {
         }
     }
 
-    @Override
-    public List<String> getCorrectAnswerCountByCategory(String name) {
-        List<UserSubmitAnswer> userSubmitAnswers = userSubmitAnswerRepository.findByAnswerStatusTrue(name);
-
-        Map<String, Long> countByCategory = userSubmitAnswers.stream()
-                .collect(Collectors.groupingBy(
-                        userSubmitAnswer -> userSubmitAnswer.getQuestion().getCategory().toString(),
-                        Collectors.counting()
-                ));
-
-        List<String> result = new ArrayList<>();
-        for (Map.Entry<String, Long> entry : countByCategory.entrySet()) {
-            String category = entry.getKey();
-            Long count = entry.getValue();
-            result.add(category + " = " + count);
-        }
-
-        return result;
-    }
-
-    @Override
-    public Map<String, List<String>> getFalseAnswersKeywordsByCategory(String name) {
-        List<UserSubmitAnswer> userSubmitAnswers = userSubmitAnswerRepository.findByAnswerStatusFalse(name);
-
-        return userSubmitAnswers.stream()
-                .filter(userSubmitAnswer -> userSubmitAnswer.getQuestion() != null && userSubmitAnswer.getQuestion().getKeyWord() != null)
-                .collect(Collectors.groupingBy(
-                        userSubmitAnswer -> userSubmitAnswer.getQuestion().getCategory().toString(),
-                        Collectors.mapping(userSubmitAnswer -> userSubmitAnswer.getQuestion().getKeyWord(), Collectors.toList())
-                ));
-    }
 }

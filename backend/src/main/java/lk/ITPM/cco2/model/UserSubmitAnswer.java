@@ -10,5 +10,7 @@ public class UserSubmitAnswer {
     private String name;
     private String  submitAnswer;
     private Boolean answerStatus;
+    private String userId;
     private Question question;
+    private Category category;
 }
