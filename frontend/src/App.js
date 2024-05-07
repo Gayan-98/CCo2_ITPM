@@ -24,6 +24,12 @@ import Register from "./pages/register/Register";
 
 
 
+import QuizInsert from "./pages/beginnerQuiz/quizInsert";
+import QuizEdit from "./pages/beginnerQuiz/quizEdit";
+import CategoryView from "./pages/beginnerQuiz/categoryView";
+import QuizView from "./pages/beginnerQuiz/quizView";
+
+
 function App() {
 
   const { darkMode } = useContext(DarkModeContext);
@@ -145,6 +151,52 @@ function App() {
         },
       ],
     },
+
+    
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/quizInsert", 
+          element: <QuizInsert />,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/quizEdit", 
+          element: <QuizEdit />,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/categoryView", 
+          element: <CategoryView />,
+        },
+      ],
+    },
+
+    {
+      path: "/", 
+      element: <Layout2 />,
+      children: [
+        {
+          path: "/quizView", 
+          element: <QuizView/>,
+        },
+      ],
+    },
+
 
 
   ]);
