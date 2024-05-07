@@ -35,7 +35,6 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Error logging in:", error);
-
       //setError("Error logging in");
     }
   };
@@ -44,28 +43,22 @@ const Login = () => {
     <div className="login">
       <div className="card">
         <div className="left">
-          <p></p>
-          <p></p>
-          <p></p>
           <h1>CCo2-Clean Code Oxygen</h1>
           <p></p>
-          <p></p>
-          <p></p>
+          <h3>Welcome Back!!!</h3>
           {/* <p>
           Welcome to our platform designed for aspiring coders taking their first steps into the world of web development. 
           Whether you're a novice enthusiast or an eager learner, 
           our platform provides a nurturing environment where you can embark on your coding journey with confidence.
           </p> */}
-          <div className="create-account" style={{ marginTop: "15px" }}>
-            <a href="/register">Don't have an account?</a>
-          </div>
+
           {/* <span>Don't you have an account?</span> */}
           {/* <Link to="/register">
             <button>Register</button>
           </Link> */}
         </div>
         <div className="right">
-          <h1>Login</h1>
+          <h1 style={{ color: "blue" }}>LOGIN</h1> {/* Make only the word "Login" blue */}
           <form onSubmit={handleLogin}>
             <label htmlFor="username">Username:</label>
             <input
@@ -81,9 +74,16 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Link to="/">
+            {/* <Link to="/"> */}
               <button type="submit">Login</button>
-            </Link>
+            {/* </Link> */}
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <div className="create-account" style={{ marginTop: "15px" }}>
+              <a href="/register">Don't have an account?</a>
+            </div>
           </form>
           {error && <p className="error">{error}</p>}
         </div>

@@ -36,25 +36,22 @@ const Register = () => {
     <div className="register">
       <div className="card">
         <div className="left">
-          <p></p>
-          <p></p>
           <h1>CCo2-Clean Code Oxygen</h1>
           <p></p>
           <p></p>
-          {/* <p>
-          In our journey to empower beginner coders, we've embarked on a pivotal aspect of web development. Our web application 
-          not only teaches coding fundamentals .
-          </p> */}
+          <p>
+          <h4>Welcome to our platform designed for aspiring coders taking their first steps into the world of web development. 
+          Whether you're a novice enthusiast or an eager learner, 
+          our platform provides a nurturing environment where you can embark on your coding journey with confidence.
+          </h4></p> 
           {/* <span><h3>Do you have an account?</h3></span> */}
-          <div className="have-account" style={{ marginTop: "15px" }}>
-            <a href="/login">Already have an account?</a>
-          </div>
+          
           {/* <Link to="/login">
             <button>Login</button>
           </Link> */}
         </div>
         <div className="right">
-          <h1>Register</h1>
+        <h1 style={{ color: "blue" }}>REGISTER</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
             <input
@@ -85,9 +82,18 @@ const Register = () => {
               required
               minLength="8"
             />
-            <Link to="/">
+            <div className="form-group">
+          <label className="checkbox-container">
+          <input type="checkbox" required /> I agree to all statements in <a href="https://www.w3schools.com/about/about_copyright.asp" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+            {/* <input type="checkbox" /> I agree to all statements in <a href="#">Terms of Service</a> */}
+          </label>
+        </div>
+            {/* <Link to="/"> */}
               <button type="submit">Register</button>
-            </Link>
+            {/* </Link> */}
+            <div className="have-account" style={{ marginTop: "15px" }}>
+            <a href="/login">Already have an account?</a>
+          </div>
           </form>
         </div>
       </div>

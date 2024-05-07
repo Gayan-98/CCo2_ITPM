@@ -9,7 +9,6 @@
     width: 50%;
     display: flex;
     background-color: white;
-    //border-radius: 10px;
     min-height: 600px;
     overflow: hidden;
 
@@ -19,6 +18,7 @@
         url("../../assets/loginbg.jpeg") center;
       background-size: cover;
       padding: 50px;
+      width: 80%;
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -28,6 +28,7 @@
         font-size: 100px;
         line-height: 100px;
       }
+
       .create-account {
         text-decoration: none;
         text-align: center;
@@ -38,34 +39,21 @@
           text-decoration: underline;
         }
       }
-      p {
-      }
-
-      span {
-        font-size: 14px;
-      }
-
-      // button {
-      //   width: 50%;
-      //   padding: 10px;
-      //   border: none;
-      //   background-color: white;
-      //   color: rgb(43, 116, 225);
-      //   font-weight: bold;
-      //   cursor: pointer;
-      // }
     }
 
     .right {
       flex: 1;
-      padding: 50px;
       display: flex;
       flex-direction: column;
+      justify-content: center; /* Center vertically */
+      align-items: center; /* Center horizontally */
+      padding: 50px;
       gap: 50px;
-      justify-content: center;
+      width: 0%;
 
       h1 {
         color: #555;
+        font-size: 30px; /* Adjust the font size as needed */
       }
 
       form {
@@ -78,16 +66,6 @@
           border-bottom: 1px solid lightgray;
           padding: 10px 10px;
         }
-
-        // button {
-        //   width: 50%;
-        //   padding: 10px;
-        //   border: none;
-        //   background-color: white;
-        //   color: rgb(43, 116, 225);
-        //   font-weight: bold;
-        //   cursor: pointer;
-        // }
       }
     }
   }

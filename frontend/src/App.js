@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import "./style.scss";
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login"
+import Login from "./pages/login/Login";
+// import editProfile from "./pages/editProfile/editProfile";
 import LeftBar from "./components/leftBar/LeftBar";
 import RightBar from "./components/rightBar/RightBar";
 import {
@@ -98,19 +99,10 @@ function App() {
       path: "/register", 
       element: <Register />,
     },
-   
-    {
-      path: "/", 
-      element: <Layout />,
-      children: [
-        {
-          path: "/advanceQuiz", 
-          element: <AdvanceQuiz />,
-        },
-      ],
-    },
-
-
+    // {
+    //   path: "/editProfile",
+    //   element: <editProfile />,
+    // },
     {
       path: "/chat", 
       element: <Chat />,

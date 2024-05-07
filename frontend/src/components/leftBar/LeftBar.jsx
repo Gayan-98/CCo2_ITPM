@@ -24,14 +24,15 @@ const LeftBar = () => {
             <span>Leader Board</span>
           </div>
           <div className="item">
-          <Link to="/chat" className="item">
-            <img src={Setting} alt="" />
-            
-          </Link>
-          <span>Community</span>
+            <Link to="/chat" className="item">
+              <img src={Setting} alt="" />
+            </Link>
+            <span>Community</span>
           </div>
           <div className="item">
+          {/* <Link to="/edit-profile" className="item"> */}
             <img src={Setting} alt="" />
+            {/* </Link> */}
             <span>Setting</span>
           </div>
         </div>
