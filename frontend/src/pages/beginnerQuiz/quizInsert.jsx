@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './QuizInsert.scss'; 
+import './quizInsert.scss'; 
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import quizBackground from '../../assets/images-transformed2.jpeg'; // Adjust the path accordingly
+import quizBackground from '../../assets/1.png'; // Adjust the path accordingly
 
 const QuizInsert = () => {
   const [formData, setFormData] = useState({

@@ -24,7 +24,6 @@ import QuizInsert from "./pages/beginnerQuiz/quizInsert";
 import QuizEdit from "./pages/beginnerQuiz/quizEdit";
 import CategoryView from "./pages/beginnerQuiz/categoryView";
 import QuizView from "./pages/beginnerQuiz/quizView";
-import CategoryView from "./pages/beginnerQuiz/categoryView";
 
 
 function App() {
