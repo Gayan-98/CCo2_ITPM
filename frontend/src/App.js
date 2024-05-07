@@ -3,7 +3,9 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import "./style.scss";
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login"
+import Login from "./pages/login/Login";
+import EditProfile from "./pages/editProfile/EditProfile";
+import UserProfile from "./pages/userProfile/UserProfile";
 import LeftBar from "./components/leftBar/LeftBar";
 import RightBar from "./components/rightBar/RightBar";
 import {
@@ -60,6 +62,36 @@ function App() {
   };
 
   const Layout3 = () => {
+    return (
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
+        <Navbar />
+        <div style={{ display: "flex" }}> 
+                  
+          <div style={{ flex: 10 }}>
+            <Outlet />
+          </div>
+        
+        </div>
+        </div>
+      
+    );
+  };
+  const Layout4 = () => {
+    return (
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
+        <Navbar />
+        <div style={{ display: "flex" }}> 
+                  
+          <div style={{ flex: 10 }}>
+            <Outlet />
+          </div>
+        
+        </div>
+        </div>
+      
+    );
+  };
+  const Layout5 = () => {
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar />
@@ -145,7 +177,26 @@ function App() {
         },
       ],
     },
-
+    {
+      path: "/", 
+      element: <Layout4 />,
+      children: [
+        {
+          path: "/editProfile", 
+          element: <EditProfile />,
+        },
+      ],
+    },
+    {
+      path: "/", 
+      element: <Layout5 />,
+      children: [
+        {
+          path: "/userProfile", 
+          element: <UserProfile />,
+        },
+      ],
+    },
 
   ]);
   
