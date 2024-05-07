@@ -24,7 +24,7 @@ const EditProfile = () => {
               <input type="text" id="email" name="email" />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Password:</label>
               <input type="text" id="password" name="password" />
             </div>
             <div className="button-container">
