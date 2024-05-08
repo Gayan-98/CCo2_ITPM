@@ -170,7 +170,7 @@ function App() {
       element: <Layout2 />,
       children: [
         {
-          path: "/quizEdit", 
+          path: "/quizEdit/:id", 
           element: <QuizEdit />,
         },
       ],
