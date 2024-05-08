@@ -11,7 +11,7 @@ public class UserSubmitAnswerController {
 
     private final UserSubmitAnswerService userSubmitAnswerService;
 
-    @PostMapping("/questions/{question-id}/answers")
+    @PostMapping("/questions/answers")
     public void create(@RequestBody UserSubmitAnswerRequest request, @PathVariable("question-id") String questionId){
         userSubmitAnswerService.create(request,questionId);
     }

@@ -19,6 +19,7 @@ import Attempt from "./pages/advanceQuiz/attemptQuiz";
 
 import DisplayQuiz from "./pages/advanceQuiz/displayQuiz";
 import SubmitQuiz from "./pages/advanceQuiz/SubmitQuiz";
+import Quiz from "./pages/Quiz/quiz";
 
 
 
@@ -95,6 +96,10 @@ function App() {
     {
       path: "/registration", 
       element: <Registration />,
+    },
+    {
+      path: "/quiz", 
+      element: <Quiz />,
     },
    
     {
