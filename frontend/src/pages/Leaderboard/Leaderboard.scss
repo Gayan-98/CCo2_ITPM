@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    #title {
+        margin-bottom: 20px;
+    }
+
+    #leaderboard {
+        width: 50%;
+        max-width: 500px;
+        border: 2px solid #a81b1b;
+        border-radius: 5px;
+        padding: 20px;
+
+        .player {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            background-color: aliceblue;
+            padding: 0.5rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+        }
+            .num {
+                width: 3rem;
+                text-align: left;
+            }
+
+            .name {
+                width: 20rem;
+            text-overflow: ellipsis;
+            }
+
+            .marks {
+                width: 6rem;
+            text-align: right;
+            }
+        
+    }
+}

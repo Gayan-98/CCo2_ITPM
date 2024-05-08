@@ -20,10 +20,21 @@ function Quiz() {
     fetchData();
   }, []);
 
+
+  
+
   const handleNextQuestion = () => {
+    // Check if an answer has been selected
+    if (!selectedAnswer) {
+      alert('Please select an answer before proceeding to the next question.');
+      return; // Exit the function if no answer is selected
+    }
+  
+    // Proceed to the next question
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     setSelectedAnswer('');
   };
+  
 
   const handleAnswerChange = (event) => {
     setSelectedAnswer(event.target.value);
@@ -102,7 +113,9 @@ function Quiz() {
               )}
             </div>
           </div>
-          <button onClick={handleNextQuestion}>Next</button>
+          {currentQuestionIndex !== quizData.length - 1 && (
+            <button onClick={handleNextQuestion}>Next</button>
+          )}
           {currentQuestionIndex === quizData.length - 1 && (
             <button onClick={handleSubmitAnswer}>Submit</button>
           )}
