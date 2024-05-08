@@ -7,33 +7,46 @@ const QuestionsList = () => {
   const [questions, setQuestions] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8080/categories/${selectedCategory}/questions`);
-        setQuestions(response.data);
-      } catch (error) {
-        console.error('Error fetching questions:', error);
-      }
-    };
-
     const fetchCategories = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const response = await axios.get('http://localhost:8080/categories');
         setCategories(response.data);
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        setError('Error fetching categories');
       }
+      setLoading(false);
     };
-
-    fetchQuestions();
+   
     fetchCategories();
     const storedCategoryId = localStorage.getItem('selectedId');
     if (storedCategoryId) {
       setSelectedCategory(storedCategoryId);
     }
-  }, [selectedCategory]);
+  }, []); 
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get(`http://localhost:8080/categories/${selectedCategory}/questions`);
+        setQuestions(response.data);
+      } catch (error) {
+        setError('Error fetching questions');
+      }
+      setLoading(false);
+    };
+
+    if (selectedCategory) {
+      fetchQuestions();
+    }
+  }, [selectedCategory]); 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,7 +58,7 @@ const QuestionsList = () => {
   };
 
   const handleDeleteQuestion = (id) => {
-    axios.delete(`YOUR_API_ENDPOINT/${id}`)
+    axios.delete(`http://localhost:8080/questions/${id}`)
       .then(response => {
         setQuestions(questions.filter(question => question.id !== id));
         console.log('Question deleted successfully');
@@ -54,6 +67,9 @@ const QuestionsList = () => {
         console.error('Error deleting question:', error);
       });
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="questions-list-container">
@@ -95,8 +111,8 @@ const QuestionsList = () => {
               </td>
               <td>{question.correctAnswer}</td>
               <td>
-                <Link to={`/quiz-edit/${question.id}`} className="btn-edit">Edit</Link>
                 <button onClick={() => handleDeleteQuestion(question.id)} className="btn-delete">Delete</button>
+                <Link to={`/quizEdit/${question.id}`} className="btn-update">Update</Link>
               </td>
             </tr>
           ))}
