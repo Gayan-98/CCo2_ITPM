@@ -3,50 +3,41 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './quizView.scss';
 
-const QuestionsList = () => {
+const QuizView = () => {
   const [questions, setQuestions] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/categories/${selectedCategory}/questions`);
+        if (Array.isArray(response.data)) {
+          setQuestions(response.data);
+        } else {
+          console.error('Invalid data format for questions:', response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching questions:', error);
+      }
+    };
+
     const fetchCategories = async () => {
-      setLoading(true);
-      setError(null);
       try {
         const response = await axios.get('http://localhost:8080/categories');
         setCategories(response.data);
       } catch (error) {
-        setError('Error fetching categories');
+        console.error('Error fetching categories:', error);
       }
-      setLoading(false);
     };
-   
+
+    fetchQuestions();
     fetchCategories();
     const storedCategoryId = localStorage.getItem('selectedId');
     if (storedCategoryId) {
       setSelectedCategory(storedCategoryId);
     }
-  }, []); 
-
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const response = await axios.get(`http://localhost:8080/categories/${selectedCategory}/questions`);
-        setQuestions(response.data);
-      } catch (error) {
-        setError('Error fetching questions');
-      }
-      setLoading(false);
-    };
-
-    if (selectedCategory) {
-      fetchQuestions();
-    }
-  }, [selectedCategory]); 
+  }, [selectedCategory]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,9 +58,6 @@ const QuestionsList = () => {
         console.error('Error deleting question:', error);
       });
   };
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
 
   return (
     <div className="questions-list-container">
@@ -122,4 +110,4 @@ const QuestionsList = () => {
   );
 };
 
-export default QuestionsList;
+export default QuizView;
