@@ -77,7 +77,7 @@ const UserProfile = () => {
         </div>
       </div>
       <div className="user-profile__body">
-        <div className="user-profile__body__greeting">Welcome Emily!!!</div>
+        <div className="user-profile__body__greeting"><h3>Welcome Emily!!!</h3></div>
         <div className="user-profile__body__info">
           <div className="user-profile__body__info__title">
             USER INFORMATION
@@ -112,7 +112,7 @@ const UserProfile = () => {
                 Password
               </div>
               <div className="user-profile__body__info__details__row__value">
-                {showPassword ? "actualPassword" : "********"}
+                {showPassword ? "emily123" : "********"}
                 <span
                   className="password-toggle"
                   onClick={togglePasswordVisibility}
