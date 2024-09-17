@@ -1,7 +1,7 @@
 <p align="center">
   <img src="./frontend/cco2.png" alt="Logo" width="400" height="200"/>
 </p>
-# Programming Learning Platform for Beginners
+# CCO2 – Programming Learning Platform for Beginners
 
 
 ### Overview
