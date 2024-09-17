@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./frontend/cco2.png" alt="Logo" width="400" height="200"/>
+  <img src="./frontend/cco21.png" alt="Logo" width="400" height="200"/>
 </p>
 
 <p align="center" style="font-size: 24px;">
