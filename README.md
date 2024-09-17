@@ -2,11 +2,9 @@
   <img src="./frontend/cco2.png" alt="Logo" width="400" height="200"/>
 </p>
 
-<p align="center">
+<p align="center" style="font-size: 24px;">
   Programming Learning Platform for Beginners
 </p>
-
-
 
 
 ### Overview
