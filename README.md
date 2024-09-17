@@ -3,7 +3,7 @@
 </p>
 
 <p align="center" style="font-size: 24px;">
-  Programming Learning Platform for Beginners
+  Programming Learning Platform for Beginners 
 </p>
 
 
