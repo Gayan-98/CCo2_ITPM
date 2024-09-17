@@ -1,4 +1,4 @@
-# ![Logo](./frontend/cco2.png)– Programming Learning Platform for Beginners
+# <img src="./frontend/cco2.png" alt="Logo" width="200" height="100"/> – Programming Learning Platform for Beginners
 
 ### Overview
 CCO2 is an AI-powered, web-based learning platform designed to assist novice programmers in improving their coding skills. The platform integrates advanced error handling, real-time code suggestions, and personalized learning paths, empowering users to become problem solvers and critical thinkers. CCO2 supports multiple programming languages and offers an engaging, user-friendly environment with a built-in compiler, syntax highlighter, and visual debugger.
