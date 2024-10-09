@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: production-file # Fix the typo here
-          path: ./test/dist
+          path: ./frontend/build
 
   # Deploy Job
   deploy:
@@ -43,10 +43,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: production-file # Use the correct artifact name
-          path: ./test/dist
+          path: ./frontend/build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.KEY }} # Use correct token secret
-          publish_dir: ./test/dist
+          publish_dir: ./frontend/build
