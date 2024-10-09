@@ -18,7 +18,7 @@ import Attempt from "./pages/advanceQuiz/attemptQuiz";
 import SubmitQuiz from "./pages/advanceQuiz/SubmitQuiz";
 import Chat from "./components/chat/Chat";
 import Register from "./pages/register/Register";
-import CodeMetricsTable from "./pages/CodeMetricsTable/CodeMetricsTable";
+// import CodeMetricsTable from "./pages/CodeMetricsTable/CodeMetricsTable";
 import DisplayFeedback from "./pages/CodeMetricsTable/displayFeedback";
 import Cleancode from "./pages/CodeMetricsTable/cleancode";
 
