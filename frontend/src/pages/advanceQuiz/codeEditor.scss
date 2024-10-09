@@ -1,0 +1,25 @@
+.code-editor-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .code-editor-wrapper {
+    display: flex;
+    flex: 1;
+  }
+  
+  .language-selector-wrapper {
+    width: 20%;
+  }
+  
+  .editor-wrapper {
+    width: 100%;
+  }
+  
+  .output-wrapper {
+    margin-top: 40px;
+
+    
+  }
+  

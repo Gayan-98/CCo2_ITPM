@@ -1,0 +1,153 @@
+/* src/Home1.scss */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: white; /* Set background color to white */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    margin: 0 20px; /* Add margin to the sides */
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+  }
+  
+  /* Custom Cursor */
+  body {
+    cursor: url('https://example.com/cursor.png'), auto; /* Replace with your custom cursor URL */
+  }
+  
+  /* Fixed Buttons */
+  .button-container {
+    position: fixed; /* Fix buttons at the top */
+    top: 10px; /* Space from the top */
+    right: 20px; /* Space from the right */
+    display: flex;
+    gap: 5px; /* Space between buttons */
+    z-index: 1000; /* Ensure buttons are on top */
+  }
+  
+  .fixed-button {
+    padding: 10px 15px; /* Padding for the buttons */
+    font-size: 14px; /* Font size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+  }
+  
+  .fixed-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .title {
+    font-size: 2.5rem; /* Large title size */
+    margin-bottom: 10px; /* Space below title */
+  }
+  
+  .subtitle {
+    font-size: 1.2rem; /* Subtitle size */
+    margin-bottom: 20px; /* Space below subtitle */
+  }
+  
+  .icon-container {
+    margin: 20px 0; /* Space around icon */
+  }
+  
+  .eye-icon {
+    font-size: 3rem; /* Size for the eye icon */
+    animation: rotate 2s infinite linear; /* Eye icon rotation animation */
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg); /* Start rotation */
+    }
+    100% {
+      transform: rotate(360deg); /* Complete rotation */
+    }
+  }
+  
+  .hero-image {
+    width: 50%; /* Image size */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px 0; /* Space around image */
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 40px 20px; /* Padding for the features section */
+    display: flex;
+    flex-wrap: wrap; /* Wrap cards to the next line */
+    justify-content: space-between; /* Space between cards */
+  }
+  
+  .feature-card {
+    background-color: #f9f9f9; /* Light background for the card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for the card */
+    margin: 20px; /* Space between cards */
+    padding: 20px; /* Padding inside the card */
+    flex: 0 1 calc(50% - 40px); /* Two cards per row with space */
+    transition: transform 0.3s, opacity 0.3s; /* Animation for scaling and fading */
+    opacity: 0; /* Initially hidden */
+  }
+  
+  .feature-card.fade-in {
+    opacity: 1; /* Show the card */
+    transform: translateY(0); /* Reset position */
+  }
+  
+  .features-description {
+    padding: 10px 0; /* Space above and below description */
+  }
+  
+  .features-image {
+    width: 100%; /* Full width for images inside cards */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s; /* Animation for scale effect */
+  }
+  
+  .features-image:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  /* Image Section */
+  .image-section {
+    text-align: center; /* Center text */
+    padding: 40px 20px; /* Padding for the image section */
+  }
+  
+  .community-image {
+    width: 80%; /* Image width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px 0; /* Space around image */
+  }
+  
+  /* Footer Section */
+  .footer {
+    background-color: black; /* Black footer background */
+    color: white; /* White text color */
+    padding: 20px; /* Padding for footer */
+    text-align: center; /* Center footer text */
+  }
+  
+  .footer-content {
+    font-size: 1.2rem; /* Footer text size */
+  }
+  

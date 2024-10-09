@@ -3,8 +3,10 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import "./style.scss";
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login"
+import HomePage from "./pages/home/Home1";
+import Login from "./pages/login/Login";
 import LeftBar from "./components/leftBar/LeftBar";
+import LeftBar2 from "./components/leftBar/LeftBar2";
 import RightBar from "./components/rightBar/RightBar";
 import {
   createBrowserRouter,
@@ -17,22 +19,15 @@ import AdvanceQuiz from "./pages/advanceQuiz/advanceQuiz";
 import Attempt from "./pages/advanceQuiz/attemptQuiz";
 
 import DisplayQuiz from "./pages/advanceQuiz/displayQuiz";
+
 import SubmitQuiz from "./pages/advanceQuiz/SubmitQuiz";
 import Chat from "./components/chat/Chat";
-
 import Register from "./pages/register/Register";
-
-
-
-import QuizInsert from "./pages/beginnerQuiz/quizInsert";
-import QuizEdit from "./pages/beginnerQuiz/quizEdit";
-import CategoryView from "./pages/beginnerQuiz/categoryView";
-import QuizView from "./pages/beginnerQuiz/quizView";
-import CategoryAddForm from "./pages/beginnerQuiz/Categoryadd";
-
+import CodeMetricsTable from "./pages/CodeMetricsTable/CodeMetricsTable ";
+import DisplayFeedback from "./pages/CodeMetricsTable/displayFeedback";
+import Cleancode from "./pages/CodeMetricsTable/cleancode";
 
 function App() {
-
   const { darkMode } = useContext(DarkModeContext);
 
   const Layout = () => {
@@ -59,10 +54,8 @@ function App() {
           <div style={{ flex: 10 }}>
             <Outlet />
           </div>
-        
         </div>
-        </div>
-      
+      </div>
     );
   };
 
@@ -70,157 +63,136 @@ function App() {
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar />
-        <div style={{ display: "flex" }}> 
-                  
+        <div style={{ display: "flex" }}>
           <div style={{ flex: 10 }}>
             <Outlet />
           </div>
-        
         </div>
-        </div>
-      
+      </div>
     );
   };
 
-
-
-
+  const Layout4 = () => {
+    return (
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
+        <Navbar />
+        <div style={{ display: "flex" }}>
+          <LeftBar2 />
+          <div style={{ flex: 10 }}>
+            <Outlet />
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   const router = createBrowserRouter([
     {
-      path: "/", 
+      path: "/",
       element: <Layout />,
       children: [
         {
-          path: "/", 
+          path: "/",
           element: <Home />,
         },
       ],
+    },
+
+    {
+      path: "/home",
+      element: <HomePage />,
     },
     {
       path: "/login",
       element: <Login />,
     },
     {
-      path: "/register", 
+      path: "/register",
       element: <Register />,
     },
-   
+
     {
-      path: "/", 
+      path: "/",
       element: <Layout />,
       children: [
         {
-          path: "/advanceQuiz", 
+          path: "/advanceQuiz",
           element: <AdvanceQuiz />,
         },
       ],
     },
 
-
     {
-      path: "/chat", 
-      element: <Layout2 />,
+      path: "/chat",
+      element: <Chat />,
       children: [
         {
-          path: "/chat", 
+          path: "/chat",
           element: <Chat />,
         },
       ],
     },
 
     {
-      path: "/", 
+      path: "/",
       element: <Layout2 />,
       children: [
         {
-          path: "/Attempt", 
+          path: "/Attempt",
           element: <Attempt />,
         },
       ],
     },
-   
-   
 
     {
-      path: "/", 
-      element: <Layout3/>,
+      path: "/",
+      element: <Layout3 />,
       children: [
         {
-          path: "/SubmitQuiz", 
-          element: <SubmitQuiz/>,
+          path: "/SubmitQuiz",
+          element: <SubmitQuiz />,
         },
       ],
     },
 
-    
     {
-      path: "/", 
+      path: "/",
       element: <Layout2 />,
       children: [
         {
-          path: "/quizInsert", 
-          element: <QuizInsert />,
+          path: "/summery",
+          element: <CodeMetricsTable />,
+        },
+      ],
+    },
+    {
+      path: "/",
+      element: <Layout4 />,
+      children: [
+        {
+          path: "/feedback",
+          element: <DisplayFeedback />,
         },
       ],
     },
 
     {
-      path: "/", 
-      element: <Layout2 />,
+      path: "/",
+      element: <Layout4 />,
       children: [
         {
-          path: "/quizEdit/:id", 
-          element: <QuizEdit />,
+          path: "/clean",
+          element: <Cleancode />,
         },
       ],
     },
-
-    {
-      path: "/", 
-      element: <Layout2 />,
-      children: [
-        {
-          path: "/categoryView", 
-          element: <CategoryView />,
-        },
-      ],
-    },
-    {
-      path: "/", 
-      element: <Layout2 />,
-      children: [
-        {
-          path: "/categoryadd", 
-          element: <CategoryAddForm />,
-        },
-      ],
-    },
-
-    {
-      path: "/", 
-      element: <Layout2 />,
-      children: [
-        {
-          path: "/quizView", 
-          element: <QuizView/>,
-        },
-      ],
-    },
-
-
-
   ]);
-  
-  
+
   return (
     <div>
       <RouterProvider router={router} />
     </div>
   );
-
-
-
 }
 
 export default App;
