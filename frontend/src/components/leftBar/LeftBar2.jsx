@@ -2,7 +2,7 @@ import "./leftBar.scss";
 import CleanCode from "../../assets/1.png";
 import LeaderBoard from "../../assets/2.png";
 import Setting from "../../assets/5.png";
-import { useContext } from "react";
+
 import { Link } from "react-router-dom";
 
 const LeftBar = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './rightBar.scss';
-import Output from '../editorOutput/Output';
+
 
 const RightBar = () => {
   const [storedData, setStoredData] = useState(localStorage.getItem('outputData'));

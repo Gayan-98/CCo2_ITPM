@@ -37,9 +37,9 @@ const Attempt = () => {
     console.log("Code submitted:", code);
   };
 
-  const handleCodeChange = (event) => {
-    setCode(event.target.value);
-  };
+  // const handleCodeChange = (event) => {
+  //   setCode(event.target.value);
+  // };
 
   if (error) {
     return <div>Error: {error}</div>;
