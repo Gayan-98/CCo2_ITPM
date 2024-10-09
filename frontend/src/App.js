@@ -8,17 +8,13 @@ import Login from "./pages/login/Login";
 import LeftBar from "./components/leftBar/LeftBar";
 import LeftBar2 from "./components/leftBar/LeftBar2";
 import RightBar from "./components/rightBar/RightBar";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import AdvanceQuiz from "./pages/advanceQuiz/advanceQuiz";
 import Attempt from "./pages/advanceQuiz/attemptQuiz";
 import SubmitQuiz from "./pages/advanceQuiz/SubmitQuiz";
 import Chat from "./components/chat/Chat";
 import Register from "./pages/register/Register";
-// import CodeMetricsTable from "./pages/CodeMetricsTable/CodeMetricsTable";
+import CodeMetricsTable from "./pages/CodeMetricsTable/CodeMetricsTable1 ";
 import DisplayFeedback from "./pages/CodeMetricsTable/displayFeedback";
 import Cleancode from "./pages/CodeMetricsTable/cleancode";
 
@@ -79,9 +75,7 @@ function App() {
     {
       path: "/",
       element: <Layout />,
-      children: [
-        { path: "/", element: <Home /> },
-      ],
+      children: [{ path: "/", element: <Home /> }],
     },
     { path: "/home", element: <HomePage /> },
     { path: "/login", element: <Login /> },

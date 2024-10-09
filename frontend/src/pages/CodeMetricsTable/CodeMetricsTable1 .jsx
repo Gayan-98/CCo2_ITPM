@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
-import './codeMetricsTable .scss';
+import axios from "axios";
+import "./codeMetricsTable .scss";
 
 const CodeMetricsTable = () => {
   const [metrics, setMetrics] = useState([]);
@@ -12,19 +12,20 @@ const CodeMetricsTable = () => {
 
   const fetchData = async () => {
     try {
-    //   const response = await axios.get('http://localhost:8080/api/code/user/${localStorage.getItem("userId")}'); 
-      const response = await axios.get('http://localhost:8080/api/code/user/6623442c9058ee2d8e066db8'); 
+      //   const response = await axios.get('http://localhost:8080/api/code/user/${localStorage.getItem("userId")}');
+      const response = await axios.get(
+        "http://localhost:8080/api/code/user/6623442c9058ee2d8e066db8"
+      );
       setMetrics(response.data);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
-  const handleAttempt = (answerId) => {    
+  const handleAttempt = (answerId) => {
     console.log(answerId);
     localStorage.setItem("answerid", answerId);
-};
-
+  };
 
   return (
     <div className="code-metrics-table">
@@ -43,7 +44,7 @@ const CodeMetricsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {metrics.map(metric => (
+          {metrics.map((metric) => (
             <tr key={metric.id}>
               {/* <td>{metric.quiId}</td> */}
               <td>{metric.code}</td>
@@ -54,9 +55,11 @@ const CodeMetricsTable = () => {
               <td>{metric.estimatedSpaceComplexity}</td>
               <td>{metric.controlFlowComplexity}</td>
               <td>
-              <Link to="/feedback">
-                <button onClick={() => handleAttempt(metric.id)}>Feedback</button>
-              </Link>
+                <Link to="/feedback">
+                  <button onClick={() => handleAttempt(metric.id)}>
+                    Feedback
+                  </button>
+                </Link>
               </td>
             </tr>
           ))}
