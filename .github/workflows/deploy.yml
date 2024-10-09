@@ -25,7 +25,7 @@ jobs:
 
       - name: Build Project
         run: |
-          cd test
+          cd frontend
           npm run build
 
       - name: Upload artifact to enable deployment
